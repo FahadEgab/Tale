@@ -14,6 +14,7 @@
                                         <th>Title</th>
                                         <th>Update</th>
                                         <th>Delete</th>
+                                        <th>Activation</th>
                                     </tr>
                                     @foreach($tales as $tale)
                                     <tr>
@@ -29,10 +30,27 @@
                                                 </div>
                                                 </form>
                                         </td>
+
+                                        <td>
+                                           @if($tale->active == 0)
+                                            <form method="post" action="{{route('Tales.active',[$tale->id])}}" >
+                                                <div class="d-flex me-auto" style="padding: 1%;">
+                                                    @csrf
+                                                    @method('PUT')
+                                                    <button type="submit" class="btn btn-outline-success" style="float: left;">Active</button>
+                                                </div>
+
+                                            </form>
+                                            @else
+                                            Is Active
+                                            @endif
+
+                                        </td>
+
                                     </tr>
                                     @endforeach
                                     <tr>
-                                        <td colspan="4" >
+                                        <td colspan="5" >
                                            <div style="text-align: center">
                                                {!! $tales->links() !!}
                                            </div>

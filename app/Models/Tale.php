@@ -34,4 +34,9 @@ class Tale extends Model
         return $this -> hasMany('App\Models\Comment','tale_id');
     }
 
+    public function scopeActive($query)
+    {
+        return $query->where('active', 1);
+    }
+
 }

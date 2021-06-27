@@ -28,6 +28,7 @@ Route::group(['prefix'=>'Tale'],function (){
     Route::get('/mange','\App\Http\Controllers\TaleController@showAll')->name('Tales.manage');
     Route::post('/comment/{id}','\App\Http\Controllers\TaleController@addComment')->name('Tales.comment');
     Route::delete('/deleteComment/{id}','\App\Http\Controllers\TaleController@deleteComment')->name('Comment.delete');
+    Route::put('active/{id}','\App\Http\Controllers\TaleController@active')->name('Tales.active');
 
     Route::get('/showUser','\App\Http\Controllers\UserController@show')->name('User.show');
     Route::put('/updateUser/{id}','\App\Http\Controllers\UserController@update')->name('User.update');

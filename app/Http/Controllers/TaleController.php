@@ -21,7 +21,7 @@ class TaleController extends Controller
      */
     public function index()
     {
-        $tales = Tale::with('user')->cursorPaginate(15);
+        $tales = Tale::active()->with('user')->cursorPaginate(15);
         return view('tale.index',compact('tales'));
     }
 
@@ -127,4 +127,12 @@ class TaleController extends Controller
         Comment::destroy($id);
         return redirect()->back();
     }
+
+   public function active($id){
+        $tale = Tale::find($id);
+        $tale -> update([
+            'active' => 1
+        ]);
+        return redirect() -> back();
+   }
 }
